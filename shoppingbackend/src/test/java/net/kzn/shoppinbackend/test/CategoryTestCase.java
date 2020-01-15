@@ -1,4 +1,4 @@
-package net.kzn.shoppingbackend.test;
+package net.kzn.shoppinbackend.test;
 
 import static org.junit.Assert.assertEquals;
 

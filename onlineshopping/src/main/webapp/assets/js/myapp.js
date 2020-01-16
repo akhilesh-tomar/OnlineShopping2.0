@@ -31,6 +31,7 @@ $(function() {
 		var jsonUrl ='';
 		if(window.categoryId == '') {
 			jsonUrl = window.contextRoot +'/json/data/all/products';
+			console.log("Hello"+window.contextRoot);
 		}
 		else {
 			jsonUrl = window.contextRoot +'/json/data/category/'+ window.categoryId +'/products';
@@ -81,8 +82,8 @@ $(function() {
 			        		  bSortable=false;
 			        		  var str='';
 			        		  
-			        		  str+='<a href="'+window.contextRoot+'show/'+data+'/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span>View</a> &#70';
-			        		  str+='<a href="'+window.contextRoot+'cart/add/'+data+'/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>';
+			        		  str+='<a href="'+window.contextRoot+'/show/'+data+'/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span>View</a> &#70';
+			        		  str+='<a href="'+window.contextRoot+'/cart/add/'+data+'/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>';
 			        		  return str;
 			        	  }
 			          }

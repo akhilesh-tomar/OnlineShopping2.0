@@ -80,6 +80,11 @@
 				<%@include file="listProducts.jsp"%>
 			</c:if>			
 			
+			
+			<c:if test="${userclickShowProduct == true }">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
 
 		</div>
 

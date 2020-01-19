@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 
-
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,14 +22,15 @@ public class Product {
 		private int id;
 		private String code;
 		
-	
+		@NotBlank(message="Please enter the product name")
 		private String name;
-	
+		@NotBlank(message="Please enter the brand name")
 		private String brand;
 		@JsonIgnore
+		@NotBlank(message="Please enter the description")
 		private String description;
 		@Column(name = "unit_price")
-	
+		@Min(value=1,message = "price cannot be less than 1")
 		private double unitPrice;
 		private int quantity;
 		@Column(name = "is_active")

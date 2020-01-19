@@ -45,8 +45,8 @@ edit the product
 
 								<sf:input type="text" path="name" id="name"
 									placeholder="product Name" class="form-control" />
-								<em class="help-block">Please enter product Name</em>
-
+					<!--  		<em class="help-block">Please enter product Name</em>-->	
+								<sf:errors path="name" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 
@@ -59,7 +59,7 @@ edit the product
 
 								<sf:input type="text" path="brand" id="brand"
 									placeholder="Enter brand Name" class="form-control" />
-								<em class="help-block">Please enter product Name</em>
+								<sf:errors path="brand" cssClass="help-block" element="em"/>
 
 							</div>
 						</div>
@@ -75,7 +75,7 @@ edit the product
 
 								<sf:textarea path="description" id="description"
 									placeholder="Enter description" row="4" class="form-control" />
-
+								<sf:errors path="description" cssClass="help-block" element="em"/>
 
 
 
@@ -90,6 +90,8 @@ edit the product
 
 								<sf:input type="text" path="unitPrice" id="unitPrice"
 									placeholder="Unit price in &#8377" class="form-control" />
+									<sf:errors path="unitPrice" cssClass="help-block" element="em"/>
+									
 							</div>
 						</div>
 

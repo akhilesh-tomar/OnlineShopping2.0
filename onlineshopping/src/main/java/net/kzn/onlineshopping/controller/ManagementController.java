@@ -3,11 +3,14 @@ package net.kzn.onlineshopping.controller;
 import java.util.List;
 
 import javax.servlet.jsp.tagext.TryCatchFinally;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,13 +69,18 @@ public class ManagementController {
 	 */
 	
 	@RequestMapping(value="/products1234",method=RequestMethod.POST)
-	public String handleProductSubmission(@ModelAttribute("product") Product mproduct)
+	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mproduct, BindingResult results,Model model)
 	{			
 		
-					System.out.println(mproduct.getCategoryId());
+				if (results.hasErrors()) {
+					
+					model.addAttribute("userClickManageProducts", true);
+					model.addAttribute("title", "Manage Products");
+					
+					return "page";
+				}
 			
 			
-			Logger.info(mproduct.toString());
 			productDAO.add(mproduct);
 		
 		return "redirect:/manage/products?operation=product";

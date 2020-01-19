@@ -11,6 +11,9 @@ $(function() {
 		case 'All Products':
 			$('#listProducts').addClass('active');
 			break;
+		case 'Manage Products':
+			$('#manageProducts').addClass('active');
+			break;
 		default:	
 			if(menu == "Home") break;
 			$('#listProducts').addClass('active');
@@ -82,7 +85,10 @@ $(function() {
 			        		  bSortable=false;
 			        		  var str='';
 			        		  
+			        		//  Adding symbol for view icon
 			        		  str+='<a href="'+window.contextRoot+'/show/'+data+'/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span>View</a> &#70';
+			        		  
+			        		 //Addin symbol for cart icon 
 			        		  str+='<a href="'+window.contextRoot+'/cart/add/'+data+'/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>';
 			        		  return str;
 			        	  }

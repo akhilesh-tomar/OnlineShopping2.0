@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,11 +21,15 @@ public class Product {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private int id;
 		private String code;
+		
+	
 		private String name;
+	
 		private String brand;
 		@JsonIgnore
 		private String description;
 		@Column(name = "unit_price")
+	
 		private double unitPrice;
 		private int quantity;
 		@Column(name = "is_active")
@@ -37,10 +44,14 @@ public class Product {
 		private int purchases;
 		private int views;
 		
+		
+		// default constructor
 		public Product() {
 			
-			this.code = UUID.randomUUID().toString().substring(26).toUpperCase();
+			this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
+			
 		}
+		
 
 		public int getId() {
 			return id;
@@ -136,6 +147,15 @@ public class Product {
 
 		public void setViews(int views) {
 			this.views = views;
+		}
+
+
+		@Override
+		public String toString() {
+			return "Product [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", description="
+					+ description + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", active=" + active
+					+ ", categoryId=" + categoryId + ", supplierId=" + supplierId + ", purchases=" + purchases
+					+ ", views=" + views + "]";
 		}
 		
 		

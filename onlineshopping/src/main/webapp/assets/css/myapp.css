@@ -88,5 +88,8 @@ footer {
 	height:80px;
 }
 
-
+/* overridden css */
+.help-block {
+	color: #ff0000;
+}
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%-5level %msg %d{HH:mm:ss.SSS} %logger{36} %n</Pattern>
+		</encoder>
+	</appender>
+
+	<!-- 
+	for logback.xml the default level debug is only for root and not group id
+	so  showing debug for package need to use level="DEBUG" explicitly 
+	
+	Any logging activity happens with this logger also provided to the root
+	so to avoid this we are using additivity = "false"
+	 -->
+	
+	<logger name="net.kzn" level="DEBUG" additivity = "false">
+		<appender-ref ref="consoleAppender"/>	
+	</logger>	
+
+<!-- -To avoid the display ifo for all spring framework we use level="INFO" -->
+	<root level="INFO">
+		<appender-ref ref="consoleAppender"/>
+	</root>
+
+</configuration>

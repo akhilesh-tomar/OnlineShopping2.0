@@ -24,15 +24,19 @@ public class Address {
 	private String postalCode;
 	@Column(name="is_billing")
 	private boolean billing;
-	@Column(name="user_id")
-	private int user_id;
-
 	private boolean shipping;
-	public int getUser_id() {
-		return user_id;
+	
+	@ManyToOne
+	private User user;
+
+
+
+	
+	public User getUser() {
+		return user;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public boolean isShipping() {
 		return shipping;

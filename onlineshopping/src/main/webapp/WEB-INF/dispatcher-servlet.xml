@@ -29,6 +29,51 @@
 	
 	<mvc:resources location="/assets/" mapping="/resources/**" />
 	
+	<!-- Webflow configuration -->
+	<!--flow -executor which is the entry point of flow inside dispatcher servelet.xml file
+FlowExecutor – This is the central class of the Flow and is the facade for the actual flow. It manages creating of new flows or resuming existing flows. It is an entry into the Spring web flow system.
+  -->
+	<wf:flow-executor id="flowExecutor"  />
+
+
+<!-- flow-registry is used by the flow executor to locate the flow that's why we have property called base-path which tell 
+where the flow file is but along with this we are also using location-pattern value. Id mention below (flow-registry) is used to trigger a particular flow
+
+-->
+	<wf:flow-registry id="flowRegistry" base-path="/WEB-INF/views/flows" flow-builder-services="flowBuilderServices">
+		<wf:flow-location-pattern value="/**/*-flow.xml"/>		
+	</wf:flow-registry>
+
+
+   	<wf:flow-builder-services id="flowBuilderServices"
+    	view-factory-creator="viewFactoryCreator"
+    	validator="validator"
+   	/>
+ 	
+<!--FlowHandler – This is a controller helper that has the reference to the actual flow. It handles the execution of the flow, 
+its outcomes and exceptions.
+FlowHandlerAdapter – This is the HandlerAdapter for web flows. It delegates work to the mapped FlowHandler.
+-->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+		<property name="flowExecutor" ref="flowExecutor" />
+	</bean>
+
+<!--FlowHandlerMapping – This is a HandlerMapping that creates a URL from the ids registered in the flow registry. It returns a FlowHandler if a matching id is found in the
+ flow registry.-->
+	
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+		<property name="flowRegistry" ref="flowRegistry" />
+		<property name="order" value="-1" />
+	</bean>	
+	
+   	<bean id="viewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+         <property name="viewResolvers" ref="viewResolver" />
+ 	</bean>	
+ 	
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/> 	
+
+</beans>
+	
 	
 	
 
